@@ -1,4 +1,9 @@
-const PlayListPage = () => {
-  return <div>PlaylistPage</div>;
-};
-export default PlayListPage;
+const PlaylistPage = () => {
+    return (
+        <div>
+            playlist page
+        </div>
+    )
+}
+
+export default PlaylistPage;

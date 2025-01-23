@@ -1,15 +1,15 @@
-import * as React from "react";
-import ThemeRegistry from "@/components/theme-registry/theme.registry";
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+import AppHeader from '@/components/header/app.header';
+import ThemeRegistry from '@/components/theme-registry/theme.registry';
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body>
-        <ThemeRegistry>{children}</ThemeRegistry>
+        <ThemeRegistry>
+          <AppHeader />
+          {children}
+        </ThemeRegistry>
       </body>
     </html>
   );
