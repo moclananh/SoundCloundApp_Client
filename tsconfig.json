@@ -29,7 +29,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/components/main/main.slider.jsx"
+    "src/components/slider/main.slider.jsx"
   ],
   "exclude": ["node_modules"]
 }

@@ -8,17 +8,23 @@ import Button from "@mui/material/Button/Button";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import Divider from "@mui/material/Divider";
+import Link from "next/link";
 
-const MainSlider = () => {
+interface Props {
+  data: ITrackTop[];
+  title: string;
+}
+const MainSlider = ({ data, title }: Props) => {
   const NextArrow = (props: any) => {
     return (
       <Button
-        variant="outlined"
+        variant="contained"
+        color="inherit"
         onClick={props.onClick}
         sx={{
           position: "absolute",
           right: 0,
-          top: "50%",
+          top: "25%",
           zIndex: 2,
           minWidth: 30,
           width: 35,
@@ -32,11 +38,12 @@ const MainSlider = () => {
   const PrevArrow = (props: any) => {
     return (
       <Button
-        variant="outlined"
+        variant="contained"
+        color="inherit"
         onClick={props.onClick}
         sx={{
           position: "absolute",
-          top: "50%",
+          top: "25%",
           zIndex: 2,
           minWidth: 30,
           width: 35,
@@ -60,8 +67,12 @@ const MainSlider = () => {
     <Box
       sx={{
         margin: "0 50px",
-        ".abc": {
+        ".track": {
           padding: "0 10px",
+          img: {
+            width: 150,
+            height: 150,
+          },
         },
         h3: {
           border: "1px solid #ccc",
@@ -70,36 +81,22 @@ const MainSlider = () => {
         },
       }}
     >
-      <h2> Multiple tracks </h2>
+      <h2> {title} </h2>
 
       <Slider {...settings}>
-        <div className="abc">
-          <h3>Track 1</h3>
-        </div>
-        <div className="abc">
-          <h3>Track 2</h3>
-        </div>
-        <div className="abc">
-          <h3>Track 3</h3>
-        </div>
-        <div className="abc">
-          <h3>Track 4</h3>
-        </div>
-        <div className="abc">
-          <h3>Track 5</h3>
-        </div>
-        <div className="abc">
-          <h3>Track 6</h3>
-        </div>
-        <div className="abc">
-          <h3>Track 7</h3>
-        </div>
-        <div className="abc">
-          <h3>Track 8</h3>
-        </div>
-        <div className="abc">
-          <h3>Track 9</h3>
-        </div>
+        {data.map((track) => {
+          return (
+            <div className="track" key={track._id}>
+              <img
+                src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/images/${track.imgUrl}`}
+              />
+              <Link href={`/track/${track._id}`}>
+                <h4>{track.title}</h4>
+              </Link>
+              <h5>{track.description}</h5>
+            </div>
+          );
+        })}
       </Slider>
       <Divider />
     </Box>
