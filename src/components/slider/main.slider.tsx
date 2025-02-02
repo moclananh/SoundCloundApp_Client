@@ -90,7 +90,7 @@ const MainSlider = ({ data, title }: Props) => {
               <img
                 src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/images/${track.imgUrl}`}
               />
-              <Link href={`/track/${track._id}`}>
+              <Link href={`/track/${track._id}?audio=${track.trackUrl}`}>
                 <h4>{track.title}</h4>
               </Link>
               <h5>{track.description}</h5>
